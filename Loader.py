@@ -18,18 +18,17 @@ def getData(mode , Datafolder):
 
 
 class Loader(Data.Dataset):
-    def __init__(self, root, mode,Datafolder):
+    def __init__(self, mode, Datafolder):
         """
         Args:
-            root (string): Root path of the dataset.
             mode : Indicate procedure status(training or testing)
 
             self.img_name (string list): String list that store all image names.
             self.label (int or float list): Numerical list that store all ground truth label values.
         """
-        self.root = root
         self.img_name, self.label = getData(mode,Datafolder)
         self.mode = mode
+        self.Datafolder = Datafolder
         print("> Found %d images..." % (len(self.img_name)))
         
 
@@ -39,8 +38,8 @@ class Loader(Data.Dataset):
 
     def __getitem__(self, index):
         #-------------Get the image path from 'self.img_name' and load it.
-                  
-        path = self.root + self.img_name[index] + '.png'
+        root = './'+ self.Datafolder +'/'          
+        path = root + self.img_name[index] + '.png'
         img = Image.open(path)
         img_as_img = img.resize(( 160, 120),Image.ANTIALIAS)
         
@@ -62,7 +61,7 @@ class Loader(Data.Dataset):
                 transforms.ToTensor(), # range [0, 255] -> [0.0,1.0]
                 ]
             )
-        img_tran = transform1(img_as_img)
+        img_trans = transform1(img_as_img)
                 
         #-------------Return processed image and label
-        return img_tran, label
+        return img_trans, label

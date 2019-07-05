@@ -35,8 +35,8 @@ DATA_FOLDER = args.data_folder
 
 # Dataloader
 LOADER_PATH = './'+ DATA_FOLDER +'/'
-train_data=Loader.Loader(LOADER_PATH ,'train',DATA_FOLDER)
-test_data=Loader.Loader('./'+ DATA_FOLDER +'/','test',DATA_FOLDER)
+train_data=Loader.Loader('train',DATA_FOLDER)
+test_data=Loader.Loader('test',DATA_FOLDER)
 train_loader = Data.DataLoader(dataset=train_data, batch_size=BATCH_SIZE)
 test_loader = Data.DataLoader(dataset=test_data, batch_size=BATCH_SIZE)
 print (train_loader)
