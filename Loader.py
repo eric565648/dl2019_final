@@ -41,7 +41,7 @@ class Loader(Data.Dataset):
         root = './'+ self.Datafolder +'/'          
         path = root + self.img_name[index] + '.png'
         img = Image.open(path)
-        img_as_img = img.resize(( 160, 120),Image.ANTIALIAS)
+#        img_as_img = img.resize(( 160, 120),Image.ANTIALIAS)
         
         #-------------Get the ground truth label from self.label"""
         label = torch.from_numpy(self.label)[index]
@@ -49,10 +49,8 @@ class Loader(Data.Dataset):
         #-------------Transform the .jpeg rgb images
         if self.mode == 'train':
             transform1 = transforms.Compose([
-                transforms.RandomHorizontalFlip(p=0.5),
-                transforms.RandomVerticalFlip(p=0.5),
-                transforms.RandomRotation(degrees=(-45,45), resample=False, expand=False, center=None),
-                transforms.ColorJitter(contrast=(0,1)),
+                transforms.Resize(( 160, 120)),
+		transforms.ColorJitter(contrast=(0,1)),
                 transforms.ToTensor(), # range [0, 255] -> [0.0,1.0]
                 ]
             )

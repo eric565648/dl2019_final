@@ -42,6 +42,7 @@ test_loader = Data.DataLoader(dataset=test_data, batch_size=BATCH_SIZE)
 print (train_loader)
 print (test_loader)
 
+
 def train_DeepConv(epoch):
     model_DeepConvNet.train()
     correct = 0
@@ -76,7 +77,7 @@ def test_DeepConv(epoch):
         target = target.float()
         test_loss_d = Loss(output[0], target[0])
         test_loss_phi = Loss(output[1], target[1])
-        
+       
     print('---------------Test set: Average loss d:{}\t loss phi:{}-------------------\n'
           .format(test_loss_d,test_loss_phi))
 

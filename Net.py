@@ -76,7 +76,7 @@ class DeepConvNet(nn.Module):
         out = F.dropout(out, p=0.5)
         
         out = self.fc9(out)
-        out = torch.sigmoid(out)
+        #out = torch.sigmoid(out)
         
         
         return out

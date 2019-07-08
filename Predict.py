@@ -80,7 +80,7 @@ if torch.cuda.is_available():
     model_DeepConvNet.to(device) 
 
 
-model_path = '1000model.pkl'
+model_path = './model/500-tanh.pkl'
 model_DeepConvNet.load_state_dict(torch.load(model_path))
 model_DeepConvNet.eval()
 
