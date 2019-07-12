@@ -1,0 +1,1 @@
+python3.6 first_test.py --env-name Duckietown-zigzag_dists-v0 --map-name zigzag_dists --file-name setxx
